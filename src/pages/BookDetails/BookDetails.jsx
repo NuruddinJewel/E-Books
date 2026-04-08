@@ -65,13 +65,17 @@
 
 // export default BookDetails;
 
-
-import React from 'react';
+// BookDetails.jsx
+import React, { useContext } from 'react';
 import { useLoaderData, useParams } from 'react-router';
+import { BookContext } from '../../Context/BookContext';
 
 const BookDetails = () => {
     const { bookId: bookParamsId } = useParams();
     const books = useLoaderData();
+
+    const { handleMarkAsRead, handleWishList } = useContext(BookContext);
+
 
     const expectedBook = books.find(book => book.bookId === Number(bookParamsId));
 
@@ -91,14 +95,12 @@ const BookDetails = () => {
                 <h2 className="card-title">By: {author}</h2>
                 <p className='py-2 border-y-2'>{category}</p>
                 <p>Review: {review}</p>
-
                 <div className='flex items-center gap-2'>
                     {tags.map((tag) => (
                         <div key={`${bookId}-${tag}`} className="badge badge-success opacity-100 font-semibold text-md">{tag}</div>
                     ))}
                 </div>
-
-                <div className=" border-t space-y-3">
+                <div className="border-t space-y-3">
                     <div className='flex justify-between items-center gap-2'>
                         <span>Number of pages: {totalPages}</span>
                     </div>
@@ -112,8 +114,8 @@ const BookDetails = () => {
                         <span>Rating: {rating}</span>
                     </div>
                     <div className='flex items-center gap-2'>
-                        <button className="btn btn-primary">Read</button>
-                        <button className="btn btn-secondary">Wishlist</button>
+                        <button className="btn btn-primary" onClick={() => handleMarkAsRead(expectedBook)}>Mark as Read</button>
+                        <button className="btn btn-secondary" onClick={() => handleWishList(expectedBook)}>Add to Wishlist</button>
                     </div>
                 </div>
             </div>
