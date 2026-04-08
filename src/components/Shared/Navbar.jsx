@@ -44,7 +44,7 @@ const Navbar = () => {
 
                 <div className="navbar-end gap-4 ">
                     <button className="btn btn-success text-white">Sign In</button>
-                    <button className="btn btn-soft btn-primary text-white">Sign Up</button>
+                    <button className="btn btn-soft bg-purple-600 hover:bg-purple-700 text-white border-0">Sign Up</button>
                 </div>
             </div>
         </nav>

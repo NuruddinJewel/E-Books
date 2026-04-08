@@ -7,7 +7,7 @@ const Banner = () => {
                 <div className="hero-content flex-col lg:flex-row-reverse w-full justify-between">
                     <img
                         src={book}
-                        className="max-w-sm rounded-lg shadow-2xl"
+                        className="max-w-sm rounded-lg shadow-2xl h-120 bg-gray-200"
                     />
                     <div>
                         <h1 className="text-5xl font-bold">Books to freshen up <br /> your bookshelf</h1>
