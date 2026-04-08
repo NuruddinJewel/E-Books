@@ -3,12 +3,13 @@ import { BookContext } from '../../Context/BookContext';
 
 const Books = () => {
 
-    const { storedBooks } = useContext(BookContext);
-    console.log(storedBooks, "bookContext")
+    const { storedBooks, wishList } = useContext(BookContext);
+    console.log(storedBooks, wishList, "bookContext")
     return (
-        <div>
-            Books
-        </div>
+        <div className='container mx-auto'>
+            Read list: {storedBooks.length} <br />
+            Wish list: {wishList.length}
+        </div >
     );
 };
 

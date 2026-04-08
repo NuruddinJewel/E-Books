@@ -19,11 +19,14 @@ const BookProvider = ({ children }) => {
         }
     };
 
-
     // Wish List
     const handleWishList = (currentBook) => {
+        const isAlreadyRead = storedBooks.find((book) => book.bookId === currentBook.bookId);
         const isExistBook = wishList.find((book) => book.bookId === currentBook.bookId);
-        if (isExistBook) {
+
+        if (isAlreadyRead) {
+            toast.warn("This book is already marked as read!");
+        } else if (isExistBook) {
             toast.warn("This book is already in your Wish List!");
         } else {
             setWishList([...wishList, currentBook]);
@@ -36,7 +39,7 @@ const BookProvider = ({ children }) => {
         setStoredBooks,
         handleMarkAsRead,
         wishList,
-        setWishList,      // Fixed: setWhishList → setWishList
+        setWishList,
         handleWishList
     };
 
